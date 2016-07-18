@@ -1,0 +1,78 @@
+@charset "uTF-8";
+
+/*** Base ***/
+
+html {
+  /*
+   * 各所のフォントサイズ(など)をremで指定しておけば、それぞれの比率を
+   * 柔軟に設定しつつ、htmlのフォントサイズという基準値を変えるだけで
+   * 全体を調節できる。
+   * 他のルールでremを使う際に値が何pxとなるかを計算しやすくするため、
+   * htmlのフォントサイズを10pxにする(1.2rem -> 12px)。主要なブラウザでは
+   * デフォルトでフォントサイズが16pxなので、このように指定すれば10pxになる。
+   * わざわざ%で指定するのは、ユーザがブラウザのデフォルトフォントサイズを
+   * 変更している場合を考慮しているため。
+   */
+  font-size: 62.5%;
+}
+
+body {
+  color: #333;
+  font-size: 1.2rem;
+  font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+a:link, a:visited, a:hover, a:active {
+  color: #d03c56;
+  text-decoration: none;
+}
+
+/*** Common ***/
+
+/*
+ * 古いIEをサポートする場合はもう少し複雑なスタイル定義が必要になる。
+ * Ref: http://kojika17.com/2013/06/clearfix-2013.html
+ */
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/*** Header ***/
+
+.header {
+  width: 100%;
+}
+
+/*** Wrapper ***/
+
+.wrapper {
+  width: 970px;
+  margin: 30px auto 40px;
+}
+
+/*** Main ***/
+
+.main {
+  display: block;
+  float: left;
+  width: 660px;
+}
+
+/*** Sidemenu ***/
+
+.sidemenu {
+  float: right;
+  width: 275px;
+}
+
+/*** Footer ***/
+
+.footer {
+  width: 100%;
+}

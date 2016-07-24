@@ -47,6 +47,13 @@ a:link, a:visited, a:hover, a:active {
   display: none;
 }
 
+.heading {
+  background: url('../images/bg-slash.gif');
+  padding: 10px 12px;
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+}
+
 /*** Header ***/
 
 .header {
@@ -185,6 +192,81 @@ a:link, a:visited, a:hover, a:active {
   line-height: 1;
 }
 
+.scroll-list {
+  max-height: 220px;
+  overflow-y: auto;
+  margin-bottom: 30px;
+  list-style-type: none;
+
+  /*
+   * inlineもしくはinline-blockの要素を横に並べる場合、
+   * 要素間に改行があると半角スペースとして表示されてしまい、
+   * デザインが崩れやすい。しかし親要素のfont-sizeを0にすれば
+   * この問題は回避できる！
+   */
+  font-size: 0;
+}
+
+/*
+ * nth-childだと要素の種類を考慮せずに兄弟要素内の
+ * 順番を数える。ただこの場合は兄弟に同じ<li>しかいないので
+ * どちらを使っても同じ。クラスの指定と併用しても、
+ * 指定された順番の要素がそのクラスを持っているかどうかを
+ * 見るだけで、そのクラスを持つ要素の中で順番を数えるわけではない
+ * 点に注意。
+ * また、背景画像を<li>に当ててしまうとホバー時に<a>の背景色で
+ * 隠れてしまう。
+ */
+.scroll-list .scroll-item:nth-of-type(even) a {
+  background: url('../images/bg-slash.gif');
+}
+
+.scroll-list .scroll-item a {
+  display: block;
+  padding: 10px 15px;
+  color: #333;
+  transition: 0.15s;
+}
+
+.scroll-list .scroll-item a:hover {
+  background-color: #fafaf8;
+}
+
+.scroll-list .date {
+  display: inline-block;
+  width: 19%;
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-size: 1.0rem;
+}
+
+.scroll-list .category {
+  display: inline-block;
+  width: 8%;
+  border-radius: 5px;
+  background-color: #d03c56;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 1px;
+  font-size: 1.0rem;
+  line-height: 16px;
+}
+
+.scroll-list .category.news {
+  background-color: #2c3c53;
+}
+
+.scroll-list .title {
+  display: inline-block;
+  width: 73%;
+  padding-left: 15px;
+  font-size: 1.2rem;
+
+  /* 入りきらないテキストを...にする場合は常にこの3つが必要になる。 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
 /*** Sidemenu ***/
 

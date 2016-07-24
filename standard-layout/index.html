@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
   <header class="header">
     <h1 class="logo">
       <a href="#">
@@ -36,10 +37,28 @@
       </ul>
     </nav>
   </header>
+
   <div class="wrapper clearfix">
-    <main class="main"></main>
+
+    <!--
+      メインセクション。
+      実際に表示される見出しはNEWSだけだが、文章の構造としては
+      あくまで'HOT TOPIC', 'NEWS', 'ARTICLES'の3つに分かれるので、
+      それをきちんとマークアップで表現するために全てに'h2'タイトルを設ける。
+      'section'タグで分割する方法もあるが、やはりヘッダタイトルを持つ事が推奨される。
+    -->
+    <main class="main">
+      <h2 class="hidden">HOT TOPIC</h2>
+      <div class="hot-topic"></div>
+      <h2>NEWS</h2>
+      <div class="news"></div>
+      <h2 class="hidden">ARTICLES</h2>
+      <div class="articles"></div>
+    </main>
+
     <div class="sidemenu"></div>
   </div>
+
   <footer class="footer">
   </footer>
 </body>

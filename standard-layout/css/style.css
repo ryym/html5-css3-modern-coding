@@ -43,6 +43,10 @@ a:link, a:visited, a:hover, a:active {
   clear: both;
 }
 
+.hidden {
+  display: none;
+}
+
 /*** Header ***/
 
 .header {

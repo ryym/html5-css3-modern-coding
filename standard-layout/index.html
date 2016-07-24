@@ -49,7 +49,26 @@
     -->
     <main class="main">
       <h2 class="hidden">HOT TOPIC</h2>
-      <div class="hot-topic"></div>
+      <a class="hot-topic clearfix" href="#">
+        <img class="image" src="./images/hot-topic.jpg" alt="コーディング画面">
+
+        <!--
+          表示上の順序は日時、タイトル、本文だが、文章構造としてはあくまで本文と
+          日時に対して見出しが付いているのでその順番でマークアップする。
+          また見やすさのため段落内で改行しているが、見た目に影響するので本来は
+          1行で書くべき。
+        -->
+        <div class="content">
+          <h3 class="title">
+            実務で使えるHTML/CSS<br>モダンコーディングTIPS
+          </h3>
+          <p class="desc">
+            Webフロントエンドの進化の勢いはとどまるところを知りません。
+            新しい要素が増えて大幅に表現力が広がったHTML5/CSS3を活用して...
+          </p>
+          <time class="date" datetime="2015-09-01">2015.09.01 TUE</time>
+        </div>
+      </a>
       <h2>NEWS</h2>
       <div class="news"></div>
       <h2 class="hidden">ARTICLES</h2>

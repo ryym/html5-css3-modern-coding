@@ -463,6 +463,36 @@ a:link, a:visited, a:hover, a:active {
   text-decoration: underline;
 }
 
+.search-box {
+  background-color: #ccc;
+  padding: 15px;
+  font-size: 0;
+}
+
+.search-box > * {
+  font-size: 1.2rem;
+}
+
+.search-box .search-input {
+  width: 205px;
+  height: 26px;
+  padding: 0 10px;
+  border: none;
+}
+
+.search-box .search-button {
+  border: none;
+  background-color: #d03c56;
+  color: #fff;
+  width: 40px;
+  height: 26px;
+  cursor: pointer;
+}
+
+.search-box .text {
+  margin-top: 12px;
+}
+
 /*** Footer ***/
 
 .footer {

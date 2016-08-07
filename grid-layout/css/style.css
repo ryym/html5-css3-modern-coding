@@ -91,3 +91,25 @@ a:link, a:visited, a:hover, a:active {
   margin: 10px;
   line-height: 1.5;
 }
+
+/* Color per category */
+
+.item-maindish,
+.item-maindish .category::before {
+  border-color: #ffc0cb;
+}
+
+.item-appetizer,
+.item-appetizer .category::before {
+  border-color: #76c047;
+}
+
+.item-column,
+.item-column .category::before {
+  border-color: #fff100;
+}
+
+.item-breaktime,
+.item-breaktime .category::before {
+  border-color: #c1efff;
+}

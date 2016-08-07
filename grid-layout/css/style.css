@@ -22,3 +22,72 @@ a:link, a:visited, a:hover, a:active {
   color: #7c5119;
   text-decoration: none;
 }
+
+/*** box (S) ***/
+
+.item {
+  width: 180px;
+  margin-bottom: 4px;
+  padding: 8px;
+  border-bottom: 3px solid;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.item > a {
+  display: block;
+  color: #777;
+  transition: all 0.3s;
+
+  /*
+   * p.106
+   * ボックスがリンクになる時はボックス内の全エリアをクリック領域にしたいが、
+   * <section>がpaddingを持っているため、ネガティブマージンを使って中の<a>要素を
+   * 親の<section>と同じ領域に広げた上で同じpaddingとborder-radiusを設定する。
+   * ただ、今回の場合だと単に<section>にはpaddingやmarginを設けなければ、
+   * 内部の<a>にpaddingやmarginを指定するだけでも済むのになぜ？
+   * こういうテクニックもあるという紹介のため？
+   */
+  margin: -8px -8px -11px;
+  padding: 8px 8px 11px;
+  border-radius: inherit;
+}
+
+.item > a:hover {
+  box-shadow: 0 0 6px -1px rgba(0, 0, 0, 0.3);
+  opacity: 0.8;
+}
+
+.item .image {
+  display: block;
+  width: 100%;
+}
+
+.item .category {
+  margin: 15px 9px 10px;
+  color: #aaa;
+  letter-spacing: 1px;
+  font-family: "Trebuchet MS", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+}
+
+.item .category::before {
+  /*
+   * NOTE: https://developer.mozilla.org/en-US/docs/Web/CSS/content
+   * 2016/8時点ではcontent以外の属性でのattr()サポートはまだまだだが、
+   * contentでなら古いブラウザでも使える。もともとはcontentでのみ使用可能な
+   * 関数だったが、それをどの属性でも使えるようにしようという事になったっぽい。
+   */
+  content: '';
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  margin-right: 5px;
+  border: 2px solid;
+  border-radius: 50%;
+  vertical-align: -5px;
+}
+
+.item .description {
+  margin: 10px;
+  line-height: 1.5;
+}

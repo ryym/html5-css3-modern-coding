@@ -1,0 +1,253 @@
+@charset "UTF-8";
+
+/*** base ***/
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  padding: 30px;
+  background-color: #f6f7fb;
+  color: #333;
+  font-size: 1.2rem;
+  font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+a:link, a:visited, a:hover, a:active {
+  color: #7c5119;
+  text-decoration: none;
+}
+
+/*** box base ***/
+
+.item {
+  width: 180px;
+  margin-bottom: 4px;
+  padding: 8px;
+  border-bottom: 3px solid;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.item > a {
+  display: block;
+  color: #777;
+  transition: all 0.3s;
+
+  /*
+   * p.106
+   * ボックスがリンクになる時はボックス内の全エリアをクリック領域にしたいが、
+   * <section>がpaddingを持っているため、ネガティブマージンを使って中の<a>要素を
+   * 親の<section>と同じ領域に広げた上で同じpaddingとborder-radiusを設定する。
+   * ただ、今回の場合だと単に<section>にはpaddingやmarginを設けなければ、
+   * 内部の<a>にpaddingやmarginを指定するだけでも済むのになぜ？
+   * こういうテクニックもあるという紹介のため？
+   */
+  margin: -8px -8px -11px;
+  padding: 8px 8px 11px;
+  border-radius: inherit;
+}
+
+.item > a:hover {
+  box-shadow: 0 0 6px -1px rgba(0, 0, 0, 0.3);
+  opacity: 0.8;
+}
+
+.item .image {
+  display: block;
+  width: 100%;
+
+  /*
+   * 画像が読み込まれる前にMasonryが動作してしまうと
+   * 画像を考慮しないボックスの高さでレイアウトされてしまい、
+   * 表示が崩れてしまうので、こうしてCSSでも画像の高さを指定しておく。
+   * 画像の高さが固定されていない場合は、window.onloadを使う必要がある。
+   */
+  height: 109px;
+}
+
+.item .image-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.item .image-wrapper::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: 0.4s;
+  z-index: 10;
+}
+
+.item > a:hover .image-wrapper::before {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.item .image-wrapper::after {
+  content: "MORE";
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  padding: 8px 16px;
+  border: 3px solid #fff;
+  color: #fff;
+  letter-spacing: 1px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  -webkit-transform: translate(90px, -50%);
+  transform: translate(90px, -50%);
+  transition: -webkit-transform 0.4s ease-out, opacity 0.4s ease-out;
+  transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+  opacity: 0;
+  z-index: 20;
+}
+
+.item > a:hover .image-wrapper::after {
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}
+
+.item .category {
+  margin: 15px 9px 10px;
+  color: #aaa;
+  letter-spacing: 1px;
+  font-family: "Trebuchet MS", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+}
+
+.item .category::before {
+  /*
+   * NOTE: https://developer.mozilla.org/en-US/docs/Web/CSS/content
+   * 2016/8時点ではcontent以外の属性でのattr()サポートはまだまだだが、
+   * contentでなら古いブラウザでも使える。もともとはcontentでのみ使用可能な
+   * 関数だったが、それをどの属性でも使えるようにしようという事になったっぽい。
+   */
+  content: '';
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  margin-right: 5px;
+  border: 2px solid;
+  border-radius: 50%;
+  vertical-align: -5px;
+}
+
+.item .description {
+  margin: 10px;
+  line-height: 1.5;
+}
+
+/* Color per category */
+
+.item-maindish,
+.item-maindish .category::before {
+  border-color: #ffc0cb;
+}
+
+.item-appetizer,
+.item-appetizer .category::before {
+  border-color: #76c047;
+}
+
+.item-column,
+.item-column .category::before {
+  border-color: #fff100;
+}
+
+.item-breaktime,
+.item-breaktime .category::before {
+  border-color: #c1efff;
+}
+
+/*** box M size ***/
+
+.item-m {
+  /** item * 2 + 4 (gutter) */
+  width: 364px;
+}
+
+.item-m .image {
+  height: 146px;
+}
+
+.item-m .image-wrapper::after {
+  -webkit-transform: translate(182px, -50%);
+  transform: translate(182px, -50%);
+}
+
+/*** box L size ***/
+
+.item-l {
+  /** item-m * 2 + 4 (gutter) */
+  width: 732px;
+}
+
+.item-l .image {
+  height: 403px;
+}
+
+.item-l .image-wrapper::after {
+  -webkit-transform: translate(366px, -50%);
+  transform: translate(366px, -50%);
+}
+
+/*** header ***/
+
+/*
+ * XXX: itemと詳細度が同じなので、重複するプロパティで .header を
+ * 優先させるためにはこちらを後に記述しないといけない。
+ */
+.header {
+  padding: 25px 0;
+  border-bottom: none;
+  text-align: center;
+}
+
+.logo {
+  width: 136px;
+  height: 136px;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+}
+
+.logo:hover {
+  -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
+}
+
+.nav {
+  margin: 35px auto 10px;
+}
+
+.nav-item {
+  margin-top: 20px;
+  text-align: center;
+  letter-spacing: 1px;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.nav-item > a {
+  display: inline-block;
+}
+
+.nav-item > a::after {
+  content: "";
+  display: block;
+  width: 0;
+  margin: 6px auto 0;
+  border-bottom: 1px solid #7c5119;
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-item > a:hover::after {
+  width: 100%;
+}

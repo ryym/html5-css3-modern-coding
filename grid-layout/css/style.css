@@ -71,6 +71,22 @@ a:link, a:visited, a:hover, a:active {
 .item .image {
   display: block;
   width: 100%;
+
+  /*
+   * 画像が読み込まれる前にMasonryが動作してしまうと
+   * 画像を考慮しないボックスの高さでレイアウトされてしまい、
+   * 表示が崩れてしまうので、こうしてCSSでも画像の高さを指定しておく。
+   * 画像の高さが固定されていない場合は、window.onloadを使う必要がある。
+   */
+  height: 109px;
+}
+
+.item-m .image {
+  height: 146px;
+}
+
+.item-l .image {
+  height: 403px;
 }
 
 .item .category {

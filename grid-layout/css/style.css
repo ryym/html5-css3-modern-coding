@@ -23,7 +23,7 @@ a:link, a:visited, a:hover, a:active {
   text-decoration: none;
 }
 
-/*** box (S) ***/
+/*** box ***/
 
 .item {
   width: 180px;
@@ -32,6 +32,16 @@ a:link, a:visited, a:hover, a:active {
   border-bottom: 3px solid;
   border-radius: 5px;
   background-color: #fff;
+}
+
+.item-m {
+  /** item * 2 + 4 (gutter) */
+  width: 364px;
+}
+
+.item-l {
+  /** item-m * 2 + 4 (gutter) */
+  width: 732px;
 }
 
 .item > a {

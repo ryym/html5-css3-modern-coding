@@ -23,7 +23,7 @@ a:link, a:visited, a:hover, a:active {
   text-decoration: none;
 }
 
-/*** box ***/
+/*** box base ***/
 
 .item {
   width: 180px;
@@ -32,16 +32,6 @@ a:link, a:visited, a:hover, a:active {
   border-bottom: 3px solid;
   border-radius: 5px;
   background-color: #fff;
-}
-
-.item-m {
-  /** item * 2 + 4 (gutter) */
-  width: 364px;
-}
-
-.item-l {
-  /** item-m * 2 + 4 (gutter) */
-  width: 732px;
 }
 
 .item > a {
@@ -112,7 +102,7 @@ a:link, a:visited, a:hover, a:active {
   letter-spacing: 1px;
   font-size: 1.4rem;
   font-weight: bold;
-  -webkit-transform: translate(400px, -50%);
+  -webkit-transform: translate(90px, -50%);
   transform: translate(90px, -50%);
   transition: -webkit-transform 0.4s ease-out, opacity 0.4s ease-out;
   transition: transform 0.4s ease-out, opacity 0.4s ease-out;
@@ -124,22 +114,6 @@ a:link, a:visited, a:hover, a:active {
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   opacity: 1;
-}
-
-.item-m .image {
-  height: 146px;
-}
-
-.item-m .image-wrapper::after {
-  transform: translate(182px, -50%);
-}
-
-.item-l .image {
-  height: 403px;
-}
-
-.item-l .image-wrapper::after {
-  transform: translate(366px, -50%);
 }
 
 .item .category {
@@ -191,6 +165,38 @@ a:link, a:visited, a:hover, a:active {
 .item-breaktime,
 .item-breaktime .category::before {
   border-color: #c1efff;
+}
+
+/*** box M size ***/
+
+.item-m {
+  /** item * 2 + 4 (gutter) */
+  width: 364px;
+}
+
+.item-m .image {
+  height: 146px;
+}
+
+.item-m .image-wrapper::after {
+  -webkit-transform: translate(182px, -50%);
+  transform: translate(182px, -50%);
+}
+
+/*** box L size ***/
+
+.item-l {
+  /** item-m * 2 + 4 (gutter) */
+  width: 732px;
+}
+
+.item-l .image {
+  height: 403px;
+}
+
+.item-l .image-wrapper::after {
+  -webkit-transform: translate(366px, -50%);
+  transform: translate(366px, -50%);
 }
 
 /*** header ***/

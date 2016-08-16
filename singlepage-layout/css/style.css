@@ -16,5 +16,11 @@ body {
   color: #fff;
   text-align: center;
   font-size: 1.4rem;
-  font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+
+  /*
+   * 先頭のフォントから優先して割り当てられていく。今回使用するRalewayは
+   * 欧文フォントのみなので、日本語と英数記号が混在する文章の場合、
+   * 英数字の部分だけがRalewayで表示される形になる。
+   */
+  font-family: Raleway, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
 }

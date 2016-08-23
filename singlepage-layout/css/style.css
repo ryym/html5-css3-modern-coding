@@ -82,3 +82,39 @@ body {
 .buttons .button {
   margin: 10px;
 }
+
+/*** about me ***/
+
+.about {
+  padding: 80px 30px;
+  background-color: #fff;
+  color: #333;
+}
+
+.about-heading {
+  display: inline-block;
+  margin: 30px 0 15px;
+  padding-bottom: 15px;
+  letter-spacing: 2px;
+  font-size: 4rem;
+  position: relative;
+}
+
+.about-heading::before,
+.about-heading::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-bottom: 1px solid #999;
+}
+
+.about-heading::before {
+  bottom: 5px;
+}
+
+.about-text {
+  margin: 30px 0;
+  line-height: 2.5;
+}

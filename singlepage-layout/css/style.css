@@ -104,6 +104,11 @@ body {
   background-color: #f1b400;
 }
 
+.button-ghost {
+  border: 1px solid #fff;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
 .buttons .button {
   margin: 10px;
 }
@@ -119,4 +124,120 @@ body {
 .about-text {
   margin: 30px 0;
   line-height: 2.5;
+}
+
+/*** works ***/
+
+.works {
+  background-color: #383634;
+  padding: 80px 0;
+}
+
+.works-wrapper {
+  display: table;
+  width: 100%;
+  margin-top: 60px;
+  table-layout: fixed;
+}
+
+.work-box {
+  display: table-cell;
+  position: relative;
+}
+
+.work-box::after {
+  content: '';
+
+  /*
+   * absolute (とfixed)になった要素は強制的にブロック要素になる。
+   * だから::after は通常インライン要素になるが、absolute指定する場合は
+   * display: block は無くてもいい。
+   * */
+  position: absolute;
+  top: 50%;
+  left: 0;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 50%;
+  width: 100%;
+  opacity: 0.5;
+  transform: scaleY(-1);
+}
+
+.work-box.tree::after {
+  background: url('../images/tree.jpg');
+}
+
+.work-box.building::after {
+  background: url('../images/building.jpg');
+}
+
+.work-box.lake::after {
+  background: url('../images/lake.jpg');
+}
+
+.work-box.sky::after {
+  background: url('../images/sky.jpg');
+}
+
+.work-image {
+  display: block;
+  width: 100%;
+
+  /*
+   * (174p)
+   * テキスト部分の背景 (work-box::after) を画像と同じ高さにしたいが、
+   * 画像のサイズはウィンドウのサイズによって動的に変化するため固定値を指定できない。
+   * こういう場合は画像の縦横比に着目する。今回の場合比率は 5:3 なので、横幅に対して
+   * 60% という高さを指定できればいい。height は親の高さに対する比率だが、margin と
+   * padding は上下左右すべて横幅に対する比率なので、これを使えば横幅に対する比率で
+   * 高さを指定できる。
+   */
+  margin: 0 0 60%;
+}
+
+.work-description {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 50%;
+  width: 100%;
+  overflow-y: auto;
+  z-index: 1;
+}
+
+/*
+ * 中のテキストを上下左右中庸寄せにするために
+ * display:table を使う。親の work-description は
+ * position:absolute で display:block になり、テーブルにできない。
+ */
+.work-description-inner {
+  display: table;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+}
+
+.work-text {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 1.2rem;
+  line-height: 2;
+}
+
+.work-text .button {
+  width: 60%;
+  margin-top: 20px;
+  padding: 2px;
+}
+
+/** Flip the description and image **/
+
+.work-box:nth-child(odd) .work-image {
+  margin: 60% 0 0;
+}
+
+.work-box:nth-child(odd)::after,
+.work-box:nth-child(odd) .work-description {
+  top: 0;
 }

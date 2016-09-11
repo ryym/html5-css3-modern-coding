@@ -148,6 +148,7 @@ body {
 .work-box {
   display: table-cell;
   position: relative;
+  overflow: hidden;
 }
 
 .work-box::after {
@@ -199,6 +200,19 @@ body {
    * 高さを指定できる。
    */
   margin: 0 0 60%;
+  transition: transform 0.4s;
+}
+
+.work-box:hover .work-image {
+  transform: scale(1.1, 1.1);
+}
+
+.work-box:nth-child(odd) .work-image {
+  transform-origin: 50% 0;
+}
+
+.work-box:nth-child(even) .work-image {
+  transform-origin: 50% 100%;
 }
 
 .work-description {

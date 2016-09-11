@@ -167,6 +167,7 @@ body {
   height: 50%;
   width: 100%;
   opacity: 0.2;
+  -webkit-transform: scaleY(-1);
   transform: scaleY(-1);
 }
 
@@ -200,19 +201,23 @@ body {
    * 高さを指定できる。
    */
   margin: 0 0 60%;
-  transition: transform 0.4s;
+  transition: -webkit-transform 0.4s ease-in-out;
+  transition: transform 0.4s ease-in-out;
 }
 
 .work-box:hover .work-image {
-  transform: scale(1.1, 1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .work-box:nth-child(odd) .work-image {
-  transform-origin: 50% 0;
+  -webkit-transform-origin: top center;
+  transform-origin: top center;
 }
 
 .work-box:nth-child(even) .work-image {
-  transform-origin: 50% 100%;
+  -webkit-transform-origin: bottom center;
+  transform-origin: bottom center;
 }
 
 .work-description {

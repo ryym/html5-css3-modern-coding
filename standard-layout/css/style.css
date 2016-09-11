@@ -360,18 +360,16 @@ a:link, a:visited, a:hover, a:active {
 }
 
 .ranking-item .order {
-  display: inline-block;
   width: 18px;
   height: 18px;
   color: #aaa;
   border: 1px solid #ccc;
   text-align: center;
   background-color: #fff;
-  border-radius: 9px;
+  border-radius: 50%;
   position: absolute;
   left: 46px;
   top: -9px;
-  z-index: 10;
 
   /* height - border * 2 */
   line-height: 16px;
@@ -385,8 +383,6 @@ a:link, a:visited, a:hover, a:active {
   /* increment後の値が表示されるので最初は1 */
   content: counter(ranking);
   counter-increment: ranking;
-
-  display: inline-block;
   font-size: 1.0rem;
 }
 
@@ -411,13 +407,16 @@ a:link, a:visited, a:hover, a:active {
   background-color: #a0541a;
 }
 
+.ranking .image {
+  margin-right: 15px;
+}
+
 .ranking-item .text {
   display: inline-block;
   width: 200px;
   color: #000;
   vertical-align: top;
 
-  margin-left: 15px;
   /*
    * 12px * 1.5 = 54px
    * (image height is 55px)

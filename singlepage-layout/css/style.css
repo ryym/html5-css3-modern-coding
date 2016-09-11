@@ -341,4 +341,37 @@ footer {
 /****** Styles for smartphone ******/
 
 @media (max-width: 768px) {
+
+  /*** header ***/
+
+  .header {
+    padding-top: 60px;
+  }
+
+  .site-title-sub {
+    font-size: 1.7rem;
+  }
+
+  .site-title-sub::before,
+  .site-title-sub::after {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+  }
+
+  .site-title {
+    font-size: 5rem;
+    margin-top: 35px;
+  }
+
+  /*
+   * (p.218)
+   * iOS8.4.1では、hover時にopacityなどの一部プロパティが変更がされる場合、
+   * 1回目のタップでhoverの効果が適用され、2回目のタップでリンク先に遷移する。
+   * iOS9では解消されているが、iOS8.4.1でも問題なく動くよう、opacityを
+   * 変更しないようにする。
+   */
+  .button:hover {
+    opacity: 1;
+  }
 }

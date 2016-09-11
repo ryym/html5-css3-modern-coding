@@ -15,7 +15,8 @@ module.exports = {
     "files": [
       "index.html",
       "standard-layout",
-      "grid-layout"
+      "grid-layout",
+      "singlepage-layout"
     ],
     "server": true,
     "port": 3000

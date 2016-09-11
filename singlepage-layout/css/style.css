@@ -1,0 +1,476 @@
+@charset "UTF-8";
+
+/*** base ***/
+
+html {
+  font-size: 62.5%;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  background: #151515 url('../images/bg.png') no-repeat fixed left bottom;
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+  font-size: 1.4rem;
+
+  /*
+   * 先頭のフォントから優先して割り当てられていく。今回使用するRalewayは
+   * 欧文フォントのみなので、日本語と英数記号が混在する文章の場合、
+   * 英数字の部分だけがRalewayで表示される形になる。
+   */
+  font-family: Raleway, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+}
+
+/*** common ***/
+
+.heading {
+  display: inline-block;
+  margin: 30px 0 15px;
+  letter-spacing: 2px;
+  font-size: 4rem;
+  padding: 0 0.8em;
+  position: relative;
+}
+
+.heading::before,
+.heading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  width: 0.3em;
+  height: 0.3em;
+  border: 1px solid;
+}
+
+.heading::before {
+  left: 0;
+}
+
+.heading::after {
+  right: 0;
+}
+
+/*** header ***/
+
+.header {
+  padding: 170px 30px 80px;
+}
+
+.site-title-sub {
+  margin: 0 0 30px;
+  letter-spacing: 1px;
+  font-size: 2.2rem;
+}
+
+.site-title-sub::before,
+.site-title-sub::after {
+  content: '';
+  display: inline-block;
+  width: 140px;
+  height: 2px;
+  margin: 0 30px;
+  background-color: #fff;
+  vertical-align: middle;
+}
+
+.site-title {
+  margin: 50px 0 40px;
+  font-size: 7.6rem;
+}
+
+.site-description {
+  color: #888;
+  font-size: 1.6rem;
+  margin: 40px 0 50px;
+}
+
+.button {
+  display: inline-block;
+  width: 200px;
+  padding: 20px;
+  border-radius: 4px;
+  background-color: #afa58d;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 1px;
+  font-size: 1.2rem;
+}
+
+.button:hover {
+  opacity: 0.9;
+}
+
+.button-showy {
+  background-color: #f1b400;
+}
+
+.button-ghost {
+  border: 1px solid #fff;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.buttons .button {
+  margin: 10px;
+}
+
+/*** about me ***/
+
+.about {
+  padding: 80px 30px;
+  background-color: #fff;
+  color: #333;
+}
+
+.about-text {
+  margin: 30px 0;
+  line-height: 2.5;
+}
+
+/*** works ***/
+
+.works {
+  background-color: #383634;
+  padding: 80px 0;
+}
+
+.works-wrapper {
+  display: table;
+  width: 100%;
+  margin-top: 60px;
+  table-layout: fixed;
+}
+
+.work-box {
+  display: table-cell;
+  position: relative;
+  overflow: hidden;
+}
+
+.work-box::after {
+  content: '';
+
+  /*
+   * absolute (とfixed)になった要素は強制的にブロック要素になる。
+   * だから::after は通常インライン要素になるが、absolute指定する場合は
+   * display: block は無くてもいい。
+   * */
+  position: absolute;
+  top: 50%;
+  left: 0;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 50%;
+  width: 100%;
+  opacity: 0.2;
+  transform: scaleY(-1);
+}
+
+.work-box.tree::after {
+  background-image: url('../images/tree.jpg');
+}
+
+.work-box.building::after {
+  background-image: url('../images/building.jpg');
+}
+
+.work-box.lake::after {
+  background-image: url('../images/lake.jpg');
+}
+
+.work-box.sky::after {
+  background-image: url('../images/sky.jpg');
+}
+
+.work-image {
+  display: block;
+  width: 100%;
+
+  /*
+   * (174p)
+   * テキスト部分の背景 (work-box::after) を画像と同じ高さにしたいが、
+   * 画像のサイズはウィンドウのサイズによって動的に変化するため固定値を指定できない。
+   * こういう場合は画像の縦横比に着目する。今回の場合比率は 5:3 なので、横幅に対して
+   * 60% という高さを指定できればいい。height は親の高さに対する比率だが、margin と
+   * padding は上下左右すべて横幅に対する比率なので、これを使えば横幅に対する比率で
+   * 高さを指定できる。
+   */
+  margin: 0 0 60%;
+  transition: transform 0.4s;
+}
+
+.work-box:hover .work-image {
+  transform: scale(1.1, 1.1);
+}
+
+.work-box:nth-child(odd) .work-image {
+  transform-origin: 50% 0;
+}
+
+.work-box:nth-child(even) .work-image {
+  transform-origin: 50% 100%;
+}
+
+.work-description {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 50%;
+  width: 100%;
+  overflow-y: auto;
+  z-index: 1;
+}
+
+/*
+ * 中のテキストを上下左右中庸寄せにするために
+ * display:table を使う。親の work-description は
+ * position:absolute で display:block になり、テーブルにできない。
+ */
+.work-description-inner {
+  display: table;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+}
+
+.work-text {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 1.2rem;
+  line-height: 2;
+}
+
+.work-text .button {
+  width: 60%;
+  margin-top: 20px;
+  padding: 2px;
+}
+
+/** Flip the description and image **/
+
+.work-box:nth-child(odd) .work-image {
+  margin: 60% 0 0;
+}
+
+.work-box:nth-child(odd)::after,
+.work-box:nth-child(odd) .work-description {
+  top: 0;
+}
+
+/*** skills ***/
+
+.skills {
+  padding: 80px 0;
+  background-color: #fff;
+  color: #333;
+}
+
+.skills-wrapper {
+  display: table;
+  width: 80%;
+  margin: 50px auto 0;
+  table-layout: fixed;
+}
+
+.skill-box {
+  display: table-cell;
+}
+
+.skill-icon {
+  color: #f1b400;
+  font-size: 8rem;
+  border: 4px solid;  /* 色を省略すると文字色を使う */
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  line-height: 142px;  /* height - border-width */
+  margin-bottom: 30px;
+}
+
+.skill-title {
+  margin: 0 20px 20px;
+  font-size: 2rem;
+}
+
+.skill-text {
+  margin: 0 20px;
+  line-height: 2;
+}
+
+/*** contact ***/
+
+.contact {
+  padding: 80px 0 150px;
+}
+
+.contact-form {
+  width: 50%;
+  margin: 50px auto 0;
+}
+
+.contact-form input[type=text],
+.contact-form textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 15px;
+  outline: none;
+  border-radius: 0;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+
+.contact-form textarea {
+  height: 150px;
+}
+
+.contact-form input[type=text]:focus,
+.contact-form textarea:focus {
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5) inset;
+}
+
+.contact-form input[type=submit] {
+  display: block;
+  width: 200px;
+  margin: 40px auto 0;
+  padding: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 5px;
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+}
+
+.contact-form input[type=submit]:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/*** footer ***/
+
+footer {
+  padding: 12px 0;
+  font-size: 1.3rem;
+}
+
+/****** Styles for smartphone ******/
+
+/* for tablet too */
+@media (max-width: 1024px) {
+  /*
+   * (p.223)
+   * 以下の理由で、タブレット以下のサイズの場合には背景画像を表示しない。
+   * - 画面が狭いと画像の見える部分が少ない
+   * - iOS では background-attachment: fixed が効かない
+   */
+  body {
+    background-image: none;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 1.3rem;
+  }
+
+  .heading {
+    font-size: 2.5rem;
+  }
+
+  /*** header ***/
+
+  .header {
+    padding-top: 60px;
+  }
+
+  .site-title-sub {
+    font-size: 1.7rem;
+  }
+
+  .site-title-sub::before,
+  .site-title-sub::after {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+  }
+
+  .site-title {
+    font-size: 5rem;
+    margin-top: 35px;
+  }
+
+  /*
+   * (p.218)
+   * iOS8.4.1では、hover時にopacityなどの一部プロパティが変更がされる場合、
+   * 1回目のタップでhoverの効果が適用され、2回目のタップでリンク先に遷移する。
+   * iOS9では解消されているが、iOS8.4.1でも問題なく動くよう、opacityを
+   * 変更しないようにする。
+   */
+  .button:hover {
+    opacity: 1;
+  }
+
+  /*** about me ***/
+
+  .about-text {
+    line-height: 1.8;
+  }
+
+  /*** works ***/
+
+  .works-wrapper,
+  .work-box {
+    display: block;
+  }
+
+  /* background image */
+  .work-box::after {
+    top: 0;
+    height: 100%;
+    background-size: cover;
+  }
+
+  .work-image {
+    display: none;
+  }
+
+  .work-description {
+    position: relative;
+  }
+
+  /*** skills */
+
+  .skills-wrapper,
+  .skill-box {
+    display: block;
+  }
+
+  .skill-box {
+    margin: 40px auto;
+  }
+
+  .skill-icon {
+    font-size: 5rem;
+    width: 100px;
+    height: 100px;
+    line-height: 92px;
+  }
+
+  .skill-text {
+    margin: 0;
+  }
+
+  /*** contact ***/
+
+  .contact {
+    padding-bottom: 80px;
+  }
+
+  .contact-form {
+    width: 80%;
+  }
+}

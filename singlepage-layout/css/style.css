@@ -30,9 +30,9 @@ body {
 .heading {
   display: inline-block;
   margin: 30px 0 15px;
-  padding-bottom: 15px;
   letter-spacing: 2px;
   font-size: 4rem;
+  padding: 0 30px;
   position: relative;
 }
 
@@ -40,14 +40,19 @@ body {
 .heading::after {
   content: "";
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  border-bottom: 1px solid #999;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  width: 12px;
+  height: 12px;
+  border: 1px solid;
 }
 
 .heading::before {
-  bottom: 5px;
+  left: 0;
+}
+
+.heading::after {
+  right: 0;
 }
 
 /*** header ***/
@@ -360,6 +365,13 @@ footer {
 
   .heading {
     font-size: 2.5rem;
+    padding: 0 20px;
+  }
+
+  .heading::before,
+  .heading::after {
+    width: 8px;
+    height: 8px;
   }
 
   /*** header ***/

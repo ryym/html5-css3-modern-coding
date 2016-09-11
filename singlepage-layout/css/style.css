@@ -444,4 +444,14 @@ footer {
   .skill-text {
     margin: 0;
   }
+
+  /*** contact ***/
+
+  .contact {
+    padding-bottom: 80px;
+  }
+
+  .contact-form {
+    width: 80%;
+  }
 }

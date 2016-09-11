@@ -409,4 +409,26 @@ footer {
   .work-description {
     position: relative;
   }
+
+  /*** skills */
+
+  .skills-wrapper,
+  .skill-box {
+    display: block;
+  }
+
+  .skill-box {
+    margin: 40px auto;
+  }
+
+  .skill-icon {
+    font-size: 5rem;
+    width: 100px;
+    height: 100px;
+    line-height: 92px;
+  }
+
+  .skill-text {
+    margin: 0;
+  }
 }

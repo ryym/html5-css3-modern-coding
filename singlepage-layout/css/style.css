@@ -340,6 +340,19 @@ footer {
 
 /****** Styles for smartphone ******/
 
+/* for tablet too */
+@media (max-width: 1024px) {
+  /*
+   * (p.223)
+   * 以下の理由で、タブレット以下のサイズの場合には背景画像を表示しない。
+   * - 画面が狭いと画像の見える部分が少ない
+   * - iOS では background-attachment: fixed が効かない
+   */
+  body {
+    background-image: none;
+  }
+}
+
 @media (max-width: 768px) {
   body {
     font-size: 1.3rem;

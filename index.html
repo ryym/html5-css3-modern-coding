@@ -2,39 +2,76 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>HTML5/CSS3 モダンコーディング</title>
-  <style>
-    .link-dev {
-    margin-right: 10px;
-  }
-  </style>
+  <link rel="stylesheet" href="top.css">
 </head>
 <body>
-  <ul>
-    <li>
-      <a href="standard-layout" class="link-dev">
-        Standard Layout
-      </a>
-      <a href="complete/standard-layout">
-        (completed)
-      </a>
-    </li>
-    <li>
-      <a href="grid-layout" class="link-dev">
-        Grid Layout
-      </a>
-      <a href="complete/grid-layout">
-        (completed)
-      </a>
-    </li>
-    <li>
-      <a href="singlepage-layout" class="link-dev">
-        Single Page Layout
-      </a>
-      <a href="complete/singlepage-layout">
-        (completed)
-      </a>
-    </li>
-  </ul>
+
+  <header class="header">
+    <h1 class="header-title">
+      HTML5/CSS3 Modern Coding Implementations
+    </h1>
+  </header>
+
+  <main class="main-container">
+    <ul class="chapters">
+      <li class="chapter chapter-1">
+        <div class="chapter-image">
+          <img src="standard-layout/images/hot-topic.jpg" alt="">
+        </div>
+        <a href="standard-layout" class="chapter-link">
+          <h2 class="chapter-title">
+            PART 1
+          </h2>
+          <div class="chapter-theme">
+            Standard Layout
+          </div>
+        </a>
+      </li>
+      <li class="chapter chapter-2">
+        <div class="chapter-image">
+          <img src="standard-layout/images/hot-topic.jpg" alt="">
+        </div>
+        <a href="standard-layout" class="chapter-link">
+          <h2 class="chapter-title">
+            PART 2
+          </h2>
+          <div class="chapter-theme">
+            Grid Layout
+          </div>
+        </a>
+      </li>
+      <li class="chapter chapter-3">
+        <div class="chapter-image">
+          <img src="standard-layout/images/hot-topic.jpg" alt="">
+        </div>
+        <a href="standard-layout" class="chapter-link">
+          <h2 class="chapter-title">
+            PART 3
+          </h2>
+          <div class="chapter-theme">
+            Single Page Layout
+          </div>
+        </a>
+      </li>
+    </ul>
+  </main>
+
+  <footer class="footer">
+    <ul class="footer-links">
+      <li class="footer-link">
+        <a href="https://github.com/ryym/html5-css3-modern-coding" class="link-source">
+          Source code
+        </a>
+      </li>
+      <li class="footer-link">
+        <a href="https://html5up.net/phantom">
+          Design: HTML5 UP
+        </a>
+      </li>
+    </ul>
+  </footer>
+
 </body>
 </html>

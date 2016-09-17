@@ -14,6 +14,7 @@ module.exports = {
     },
     "files": [
       "index.html",
+      "top.css",
       "standard-layout",
       "grid-layout",
       "singlepage-layout"
